@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--CSS External Style-->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Netflix-Back Office</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="nav-logo" href="home.html"><img src="img/netflix_logo.png" width="100" height="50"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link font-weight-bold" href="index.html">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#tv-shows">Back Office</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="movies.html">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="recently.html">Recently Added</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="mylist.html">My List</a>
+                    </li>
+
+                </ul>
+                <div class="d-flex my-3 my-lg-0">
+                    <a href="#"><i class="fas fa-search sub-nav-logo mx-2"></i></a>
+                    <div class="mx-2 font-weight-bold">KIDS</div>
+
+                    <a href="notifications.html"><i class="fas fa-bell sub-nav-logo mx-2"></i></a>
+                    <a href="/Setting-Page/Settings.html"><i class="fas fa-user sub-nav-logo mx-2"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class=" container-fluid mx-3">
+        
+        <div class="row justify-content-center" id="row">
+            <div class="col col-md-6">
+
+            <h2 id="backTitle" class="justify-content-center mt-5 mb-2">Back Office</h2>
+            <hr class="mb-5 bg-dark ">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    type="text"
+                    class="form-control"
+                    aria-describedby="name"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input
+                      id="description"
+                      type="text"
+                      class="form-control"
+                      aria-describedby="name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <input
+                      id="category"
+                      type="text"
+                      class="form-control"
+                      aria-describedby="name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="imageUrl">Image</label>
+                    <input
+                      id="imageUrl"
+                      type="text"
+                      class="form-control"
+                      value="http://placeimg.com/640/360/any"
+                      aria-describedby="name"
+                    />
+                  </div>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+              </form>
+            </div>
+        </div>
+           
+
+       
+
+
+
+        <section class="link">
+            <div class="logos">
+                <a href="https://www.facebook.com/netflix"><i class="fab fa-facebook-square fa-2x logo"></i></a>
+                <a href="https://www.instagram.com/netflixfilm/?hl=en"><i class="fab fa-instagram fa-2x logo"></i></a>
+                <a href="https://twitter.com/netflixfilm?lang=en"><i class="fab fa-twitter fa-2x logo"></i></a>
+                <a href="https://www.youtube.com/channel/UCWOA1ZGywLbqmigxE4Qlvuw"><i
+                        class="fab fa-youtube fa-2x logo"></i></a>
+            </div>
+            <br>
+            <div class="sub-links">
+                <ul>
+                    <li><a href="#">Audio and Subtitles</a></li>
+                    <li><a href="#">Audio Description</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Media Center</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Legal Notices</a></li>
+                    <li><a href="#">Cookie Preferences</a></li>
+                    <li><a href="#">Corporate Information</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy Emilian Kasemi & Gamze Guneri</p>
+        </footer>
+
+        <!-- Optional JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        
+
+        <script>
+
+            const urlParams = new URLSearchParams(window.location.search)
+            let movieId = urlParams.get("movieId")
+            
+
+            const endpoint = movieId ? "https://striveschool-api.herokuapp.com/api/movies/" + movieId : "https://striveschool-api.herokuapp.com/api/movies/"
+
+            const method = movieId ? 'PUT': 'POST'
+
+            window.onload = async ()=>{
+                console.log("resource:", movieId)
+
+                if(movieId){
+                    document.getElementById("backTitle").innerText += "-Edit Movie"
+                    
+                    const response = await fetch(endpoint)
+                    const movieDeatils = await response.json()
+
+                    // btn yok et
+                   
+                    //populate Movie fonkunu burdan cagirican
+
+
+                } else {
+                    document.getElementById("backTitle").innerText += "-Create a Movie"
+                }
+            }
+            const populateFields=(obj=model)=>{
+                document.getElementById("name").value = obj.name
+                document.getElementById("description").value = obj.description
+                document.getElementById("category").value = obj.category
+                document.getElementById("imageUrl").value = obj.imageUrl
+
+            }
+
+
+
+            const handleSubmit = async (event) =>{
+                const url = "https://striveschool-api.herokuapp.com/api/movies/"
+                event.preventDefault()
+
+                const getMovie = {
+                    name: document.getElementById("name").value,
+                    description: document.getElementById("name").value ,
+                    category: document.getElementById("category").value ,
+                    imageUrl: "src= https://occ-0-1490-3467.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABa0m6NR_nhaSqqFpFXumh8p2WznTZ6huSODDoo1TcSs7eVtab9mD2kYyXCRcglBJi9fqeW-8AS-ssO4Axmt48JtN5p8.webp?r=b6a",
+                }
+
+                try {
+                    const response = await fetch(endpoint + `${getMovie.category}`,{
+                        method,
+                        body: JSON.stringify(getMovie),
+                        headers: {
+                            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlNDE5ZWNlYWY0ODAwMTVjOTE4NzIiLCJpYXQiOjE2MjIxOTUzNTIsImV4cCI6MTYyMzQwNDk1Mn0.mH4D-htY7NwtPMALt1-PjWYuZFAeBfv0nzffFPYOIHY",
+                          
+                        }
+
+                    }) 
+                    console.log(response)
+
+                    if (response.ok){
+                        const data = response.json()
+                        alert("submitted!")
+                    }
+                    
+                } catch (error) {console.log(error)}
+            }
+        </script>
+    
+</body>
+
+</html>
