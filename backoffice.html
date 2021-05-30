@@ -156,39 +156,36 @@
             let movieId = urlParams.get("movieId")
             
 
-            const endpoint = movieId ? "https://striveschool-api.herokuapp.com/api/movies/" + movieId : "https://striveschool-api.herokuapp.com/api/movies/"
+            const endpoint ="https://striveschool-api.herokuapp.com/api/movies/"
 
-            const method = movieId ? 'PUT': 'POST'
 
-            window.onload = async ()=>{
-                console.log("resource:", movieId)
+            // window.onload = async ()=>{
+            //     console.log("resource:", movieId)
 
-                if(movieId){
-                    document.getElementById("backTitle").innerText += "-Edit Movie"
+            //     if(movieId){
+            //         document.getElementById("backTitle").innerText += "-Edit Movie"
                     
-                    const response = await fetch(endpoint)
-                    const movieDeatils = await response.json()
+            //         const response = await fetch(endpoint)
+            //         const movieDeatils = await response.json()
 
-                    // btn yok et
+            //         // btn yok et
                    
-                    //populate Movie fonkunu burdan cagirican
+            //         //populate Movie fonkunu burdan cagirican
 
 
-                } else {
-                    document.getElementById("backTitle").innerText += "-Create a Movie"
-                }
-            }
-            const populateFields=(obj=model)=>{
-                document.getElementById("name").value = obj.name
-                document.getElementById("description").value = obj.description
-                document.getElementById("category").value = obj.category
-                document.getElementById("imageUrl").value = obj.imageUrl
+            //     } else {
+            //         document.getElementById("backTitle").innerText += "-Create a Movie"
+            //     }
+            // }
+            // const populateFields=(obj=model)=>{
+            //     document.getElementById("name").value = obj.name
+            //     document.getElementById("description").value = obj.description
+            //     document.getElementById("category").value = obj.category
+            //     document.getElementById("imageUrl").value = obj.imageUrl
 
-            }
+            // }
 
-
-
-            const handleSubmit = async (event) =>{
+            const handleSubmit = async function (event){
                 const url = "https://striveschool-api.herokuapp.com/api/movies/"
                 event.preventDefault()
 
@@ -196,16 +193,16 @@
                     name: document.getElementById("name").value,
                     description: document.getElementById("name").value ,
                     category: document.getElementById("category").value ,
-                    imageUrl: "src= https://occ-0-1490-3467.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABa0m6NR_nhaSqqFpFXumh8p2WznTZ6huSODDoo1TcSs7eVtab9mD2kYyXCRcglBJi9fqeW-8AS-ssO4Axmt48JtN5p8.webp?r=b6a",
+                    imageUrl: "https://bit.ly/3cMc2IH",
                 }
 
                 try {
-                    const response = await fetch(endpoint + `${getMovie.category}`,{
-                        method,
+                    const response = await fetch(url  ,{
+                        method: 'POST',
                         body: JSON.stringify(getMovie),
                         headers: {
-                            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlNDE5ZWNlYWY0ODAwMTVjOTE4NzIiLCJpYXQiOjE2MjIxOTUzNTIsImV4cCI6MTYyMzQwNDk1Mn0.mH4D-htY7NwtPMALt1-PjWYuZFAeBfv0nzffFPYOIHY",
-                          
+                            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlNDE5ZWNlYWY0ODAwMTVjOTE4NzIiLCJpYXQiOjE2MjIxOTUzNTIsImV4cCI6MTYyMzQwNDk1Mn0.mH4D-htY7NwtPMALt1-PjWYuZFAeBfv0nzffFPYOIHY", 
+                            "Content-Type": "application/json",
                         }
 
                     }) 

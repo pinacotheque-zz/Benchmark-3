@@ -60,36 +60,16 @@
 
     <div class="box container-fluid mx-3">
         <h2 id="tv-shows">Tv Shows</h2>
+        <div id="movies-grid" class="row g-0">
 
-        <h5 >Drama</h5>
-        <div id="drama" class="row" id="listed">
+       
 
             <!-- <div class="col-sm-6 my-sm-5 col-md-2 my-md-2 col-lg-2">
                 <a href=""><img class="img-fluid" src="img/media0.webp" alt=""></a>
             </div> -->
-           
+        
 
-        </div>
-
-        <h5  >Horror</h5>
-        <div id="horror" class="row">
-
-            <div class="col-sm-6 my-sm-5 col-md-2 my-md-2 col-lg-2">
-                <a href=""><img class="img-fluid" src="img/media6.jpg" alt=""></a>
-            </div>
-           
-
-        </div>
-
-        <h5>Action</h5>
-        <div id= "action"c lass="row">
-
-            <div class="col-sm-6 my-sm-5 col-md-2 my-md-2 col-lg-2">
-                <a href=""><img class="img-fluid" src="img/media12.jpg" alt=""></a>
-            </div>
-
-        </div>
-
+    </div>
         <section class="link">
             <div class="logos">
                 <a href="https://www.facebook.com/netflix"><i class="fab fa-facebook-square fa-2x logo"></i></a>
@@ -121,40 +101,68 @@
         <footer>
             <p>&copy Emilian Kasemi & Gamze Guneri</p>
         </footer>
-
         <!-- Optional JavaScript -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         
 
         <script>
+                
+            const url = "https://striveschool-api.herokuapp.com/api/movies/"
+            const key = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlNDE5ZWNlYWY0ODAwMTVjOTE4NzIiLCJpYXQiOjE2MjIxOTUzNTIsImV4cCI6MTYyMzQwNDk1Mn0.mH4D-htY7NwtPMALt1-PjWYuZFAeBfv0nzffFPYOIHY"
+            const moviesGrid = document.getElementById("movies-grid")
+
             window.onload = async function(){
-                const url = "https://striveschool-api.herokuapp.com/api/movies/"
-                const currentMovies = document.getElementById("listed")
+                displayMovies(await fetchData())
+            }
 
+            const fetchData = async(catagory = "")=>{
                 try {
-                    const response = await fetch(url,{ 
+                    const response = await fetch(url + catagory,{ 
                         headers: {
-                            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlNDE5ZWNlYWY0ODAwMTVjOTE4NzIiLCJpYXQiOjE2MjIxOTUzNTIsImV4cCI6MTYyMzQwNDk1Mn0.mH4D-htY7NwtPMALt1-PjWYuZFAeBfv0nzffFPYOIHY",
-                            
-                        }})
-                    const movies = await response.json()
-
-                    movies.forEach ((movie)=>{
-                        currentMovies.innerHTML += ` 
-                                 <div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">${movie.name}</h5>
-                                    <p class="card-text">S${movie.description}</p>
-                                    <a href="details.html" class="btn btn-primary">Details</a>
-                                </div>
-                                </div>`
-                            })
+                            Authorization: key,
+                        }
+                    })
+                    const data = await response.json()
+                    console.log("data is here",data)
+                    return data
                 } catch (error) {console.log(error)}
             }
-        </script>
-    
-</body>
+           
+             const displayMovies = (catArray)=>{
+                 console.log(catArray.sort())
 
+                 catArray.sort().forEach(async catagory=>{
+                     const movieArray = await fetchData(catagory)
+
+                     const genreTitle = document.createElement("h4")
+                     genreTitle.classList.add("text-light","mt-4")
+                     genreTitle.innerHTML = catagory
+                     moviesGrid.appendChild(genreTitle)
+
+                     const moviesList = document.createElement("div")
+                     moviesList.classList.add("col-12","d-flex","overflow-scroll")
+
+                     moviesList.innerHTML = movieArray
+                        .map(
+                            movie => `
+                            <div class="col-sm-6 my-sm-5 col-md-2  col-lg-2 d-flex flex-column movie-card mx-2">
+                            <div class="position-relative">
+                                <a href="#">
+                                <img src="${movie.imageUrl}" class="img-fluid movie-img" alt="" />
+                                <span class="badge bg-info text-dark position-absolute bottom-0 start-0 w-100 rounded-0 movie-name">${movie.name}</span>
+                                </a>
+                            </div>
+                            <p class="text-light m-0 movie-desc">${movie.description}</p>
+                            </div>`
+                        ).join("")
+
+                        moviesGrid.appendChild(moviesList)
+                })
+
+             }
+                
+            
+        </script>
+</body>
 </html>
